@@ -82,16 +82,31 @@ fn calculate_variance(numbers: &[f64]) -> Result<f64, String> {
 }
 
 fn calculate_stdev(numbers: &[f64]) -> Result<f64, String> {
+    if numbers.len() < 2 {
+        return Err(String::from(
+            "Please provide at least 2 numbers for stdev",
+        ));
+    }
     Ok(calculate_variance(numbers)?.sqrt())
 }
 
 fn calculate_error95(numbers: &[f64]) -> Result<f64, String> {
+    if numbers.len() < 2 {
+        return Err(String::from(
+            "Please provide at least 2 numbers for error95",
+        ));
+    }
     let sample_stdev = calculate_stdev(numbers)?;
     let mean_stdev = sample_stdev / (numbers.len() as f64).sqrt(); //Central limit theorem
     Ok(mean_stdev * 1.95996398454) //z-score of 1.96 for MoE for 95% CI
 }
 
 fn calculate_error90(numbers: &[f64]) -> Result<f64, String> {
+    if numbers.len() < 2 {
+        return Err(String::from(
+            "Please provide at least 2 numbers for error90",
+        ));
+    }
     let sample_stdev = calculate_stdev(numbers)?;
     let mean_stdev = sample_stdev / (numbers.len() as f64).sqrt(); //Central limit theorem
     Ok(mean_stdev * 1.64485362695) //z-score of 1.64 for MoE for 90% CI
