@@ -46,7 +46,7 @@ fn main() -> Result<(), String> {
 fn calculate_average(numbers: &[f64]) -> Result<f64, String> {
     if numbers.is_empty() {
         return Err(String::from(
-            "Please provide at least 2 numbers for variance",
+            "Please provide at least 1 number for average",
         ));
     }
     let sum: f64 = numbers.iter().sum();
@@ -57,7 +57,7 @@ fn calculate_average(numbers: &[f64]) -> Result<f64, String> {
 fn calculate_median(numbers: &[f64]) -> Result<f64, String> {
     if numbers.is_empty() {
         return Err(String::from(
-            "Please provide at least 2 numbers for variance",
+            "Please provide at least 1 number for median",
         ));
     }
     let mut sorted = numbers.to_vec();
