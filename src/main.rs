@@ -3,9 +3,6 @@ use std::env;
 fn main() -> Result<(), String> {
     let args: Vec<String> = env::args().collect();
 
-    if args.len() < 2 {
-        return Err(String::from("Please provide at least one number"));
-    }
 
     let numbers = args[2..]
         .iter()
