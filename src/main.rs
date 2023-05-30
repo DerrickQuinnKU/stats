@@ -3,6 +3,10 @@ use std::env;
 fn main() -> Result<(), String> {
     let args: Vec<String> = env::args().collect();
 
+    if args.len() < 2 {
+        return Err("Please specify at least one argument".to_string());
+    }
+
 
     let numbers = args[2..]
         .iter()
